@@ -451,6 +451,32 @@ but none as significant as the quantum computing stuff.
 {\em - Brian Granger}
 \end{quotation}
 
+For example, here is how to convert between spin bases:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+
+>>> from sympy import S, latex
+>>> from sympy.physics.quantum.spin import JxKet
+>>> latex(JxKet(S(1)/2,S(1)/2).rewrite('Jz'))
+\frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
+}{2} \sqrt{2} {\left|\frac{1}{2},\frac{1}{2}\right\rangle }
+>>> latex(JxKet(1,1).rewrite('Jz'))
+\frac{1}{2} {\left|1,-1\right\rangle } + \frac{1}{2} \sqrt{2} {\left|1,0\right
+\rangle } + \frac{1}{2} {\left|1,1\right\rangle }
+
+\end{Verbatim}
+prints:
+
+\[
+\frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
+}{2} \sqrt{2} {\left|\frac{1}{2},\frac{1}{2}\right\rangle }
+\]
+
+\[
+\frac{1}{2} {\left|1,-1\right\rangle } + \frac{1}{2} \sqrt{2} {\left|1,0\right
+\rangle } + \frac{1}{2} {\left|1,1\right\rangle }
+\]
+
 For further details, see for example the papers by Cugini \cite{Cug}
 and Curry \cite{Cur}, or blog posts on quantum mechanics on 
 Planet SymPy (\url{http://planet.sympy.org/}).
