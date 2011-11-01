@@ -640,6 +640,27 @@ where we know $u_{0} = 2$ and $u_{1} = 7$.
 
 \end{Verbatim}
 
+SymPy contains wide range of special functions and it can easily be used to
+evaluate complicated expressions. For example here is how to evaluate the
+formula for the third order perturbative correction to the
+magnetic moment of an electron in quantum electrodynamics (this example also
+shows how to sum an infinite series), you can compare the formula and the value
+with the abstract of the paper \cite{QED} and see that it agrees:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+
+>>> from sympy import pi, zeta, S, log, sum, var, oo
+>>> var("n")
+n
+>>> a4 = sum(1/(2**n * n**4), (n, 1, oo))
+>>> A_3 = 83*pi**2*zeta(3)/72 - 215*zeta(5)/24 + 100*(a4 + log(2)**4/24 - \
+...         pi**2*log(2)**2/24)/3 - \
+...         239*pi**4/2160 + 139*zeta(3)/18 - 298 * pi**2 * log(2)/9 + \
+...         17101 * pi**2 / 810 + S(28259)/5184
+>>> A_3.n()
+1.18124145658720
+
+\end{Verbatim}
 
 \vskip 0.3in
 
@@ -701,6 +722,13 @@ Wroclaw,  Poland.
 SciPy conference 2011 presentation, 
 \newline
 \url{http://mattpap.github.com/scipy-2011-tutorial/html/mathematics.html}
+
+\bibitem[QED]{QED}
+S.Laporta, E.Remiddi
+{\it The analytical value of the electron (g-2) at order $\alpha^3$ in QED},
+Phys.Lett. B379 (1996) 283-291
+\newline
+\url{http://arxiv.org/abs/hep-ph/9602417}
 
 
 \bibitem[S]{S}  SymPy website
