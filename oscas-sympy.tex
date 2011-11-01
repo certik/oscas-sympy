@@ -675,10 +675,10 @@ with the abstract of the paper \cite{QED} and see that it agrees:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
 
->>> from sympy import pi, zeta, S, log, sum, var, oo
+>>> from sympy import pi, zeta, S, log, summation, var, oo
 >>> var("n")
 n
->>> a4 = sum(1/(2**n * n**4), (n, 1, oo))
+>>> a4 = summation(1/(2**n * n**4), (n, 1, oo))
 >>> A_3 = 83*pi**2*zeta(3)/72 - 215*zeta(5)/24 + 100*(a4 + log(2)**4/24 - \
 ...         pi**2*log(2)**2/24)/3 - \
 ...         239*pi**4/2160 + 139*zeta(3)/18 - 298 * pi**2 * log(2)/9 + \
