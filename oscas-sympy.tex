@@ -1,6 +1,7 @@
 
 \documentclass[12pt]{article}
 
+\usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{array, rotating} 
 \usepackage{url}
@@ -93,12 +94,14 @@ want their code to be used (no matter how), and thus use BSD.
 
 \subsection{History}
 
-SymPy was started by \OC in 2005  while an
-physics undergraduate at Charles University in Prague.
-He wrote some code during the
-summer, then he wrote some more code during the summer 2006. In February 2007,
+SymPy was started by \OC in 2005 while a
+physics undergraduate at the Charles University in Prague.
+He wrote initial code during the
+summer, then he improved it during the summer 2006, but otherwise the project
+stalled until February 2007, when
 Fabian Pedregosa joined the project and helped fixed many things, contributed
-documentation and made it alive again. 
+documentation and made it alive again. The development hasn't stopped since
+then.
 
 Many students improved SymPy incredibly 
 as part of the Google Summer of Code (GSoC):
@@ -124,22 +127,40 @@ Sherjil Ozair, Vladimir Peri\'c,  Matthew Rocklin, Sean Vig, Jeremias Yehdegho.
 \end{itemize}
 
 \noindent
-Of course,
 SymPy is a team project and it was developed by a lot of people, not
-just GSoC students. For example, Pearu Peterson
+just GSoC students. For example in the early stages, Pearu Peterson
 joined the development during the summer 2007 and he has made SymPy much more
 competitive by rewriting the core from scratch, that has made it from 10x to
-100x faster. 
+100x faster. The git repository at [1] contains all patches since July 19, 2007
+and as of this writing (October 2011) it contains patches from around 141
+different people (using {\tt git shortlog -ns | wc -l}).
 
-On Jan 4, 2011 the project leadership was passed to Aaron Meurer.
+On Jan 4, 2011 \OC passed the project leadership to Aaron Meurer.
 
 
 \subsection{Active developers}
 
 SymPy is a project with an active community of
-over 100 developers contributing to it. However, the most
-active as of this writing (October 2011) are Aaron Meurer, \OC, Brian
-Granger, Matuesz Paprocki, Ronan Lamy, and Chris Smith.
+over 100 developers contributing to it. However, among the most active (on the
+mailinglist, patches, reviews, management) as of this writing (October 2011)
+are Aaron Meurer, \OC, Brian Granger, Matuesz Paprocki, Ronan Lamy, and Chris
+Smith. Good (but not perfect) indicator is the number of patches contributed by
+people in the last year, for example the top 10 are:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=git-log]
+
+$ git shortlog -ns --since="1 year ago" | head -n 10
+   590  Chris Smith
+   579  Mateusz Paprocki
+   413  Aaron Meurer
+   172  Ronan Lamy
+   149  Saptarshi Mandal
+    91  Gilbert Gede
+    90  Vladimir Perić
+    89  Brian Granger
+    79  Matthew Rocklin
+    74  Ondřej Čertík
+\end{Verbatim}
 
 
 \subsection{Language}
@@ -430,6 +451,32 @@ but none as significant as the quantum computing stuff.
 {\em - Brian Granger}
 \end{quotation}
 
+For example, here is how to convert between spin bases:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+
+>>> from sympy import S, latex
+>>> from sympy.physics.quantum.spin import JxKet
+>>> latex(JxKet(S(1)/2,S(1)/2).rewrite('Jz'))
+\frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
+}{2} \sqrt{2} {\left|\frac{1}{2},\frac{1}{2}\right\rangle }
+>>> latex(JxKet(1,1).rewrite('Jz'))
+\frac{1}{2} {\left|1,-1\right\rangle } + \frac{1}{2} \sqrt{2} {\left|1,0\right
+\rangle } + \frac{1}{2} {\left|1,1\right\rangle }
+
+\end{Verbatim}
+prints:
+
+\[
+\frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
+}{2} \sqrt{2} {\left|\frac{1}{2},\frac{1}{2}\right\rangle }
+\]
+
+\[
+\frac{1}{2} {\left|1,-1\right\rangle } + \frac{1}{2} \sqrt{2} {\left|1,0\right
+\rangle } + \frac{1}{2} {\left|1,1\right\rangle }
+\]
+
 For further details, see for example the papers by Cugini \cite{Cug}
 and Curry \cite{Cur}, or blog posts on quantum mechanics on 
 Planet SymPy (\url{http://planet.sympy.org/}).
@@ -619,6 +666,27 @@ where we know $u_{0} = 2$ and $u_{1} = 7$.
 
 \end{Verbatim}
 
+SymPy contains wide range of special functions and it can easily be used to
+evaluate complicated expressions. For example here is how to evaluate the
+formula for the third order perturbative correction to the
+magnetic moment of an electron in quantum electrodynamics (this example also
+shows how to sum an infinite series), you can compare the formula and the value
+with the abstract of the paper \cite{QED} and see that it agrees:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+
+>>> from sympy import pi, zeta, S, log, summation, var, oo
+>>> var("n")
+n
+>>> a4 = summation(1/(2**n * n**4), (n, 1, oo))
+>>> A_3 = 83*pi**2*zeta(3)/72 - 215*zeta(5)/24 + 100*(a4 + log(2)**4/24 - \
+...         pi**2*log(2)**2/24)/3 - \
+...         239*pi**4/2160 + 139*zeta(3)/18 - 298 * pi**2 * log(2)/9 + \
+...         17101 * pi**2 / 810 + S(28259)/5184
+>>> A_3.n()
+1.18124145658720
+
+\end{Verbatim}
 
 \vskip 0.3in
 
@@ -680,6 +748,13 @@ Wroclaw,  Poland.
 SciPy conference 2011 presentation, 
 \newline
 \url{http://mattpap.github.com/scipy-2011-tutorial/html/mathematics.html}
+
+\bibitem[QED]{QED}
+S.Laporta, E.Remiddi
+{\it The analytical value of the electron (g-2) at order $\alpha^3$ in QED},
+Phys.Lett. B379 (1996) 283-291
+\newline
+\url{http://arxiv.org/abs/hep-ph/9602417}
 
 
 \bibitem[S]{S}  SymPy website
