@@ -30,13 +30,14 @@
 \def\nnn{\mathbb{N}}
 \def\pf{{\bf proof}:\ }
 \def\qed{$\Box$}
-\def\OC{Ond\v rej \v Cert\' ik\ }
+\def\OC{OČ}
 
 
 \begin{document}
 
 \author{David Joyner\thanks{Address: Mathematics Department
-US Naval Academy, Annapolis, MD 21402, USA, wdj@usna.edu}}
+US Naval Academy, Annapolis, MD 21402, USA, wdj@usna.edu},
+Ondřej Čertík\thanks{University of Nevada, Reno}}
 \title{{\small{Open Source Computer Algebra Systems}}\\ {\LARGE{SymPy}}}
 
 \date{2011-10-31}
@@ -58,7 +59,8 @@ or the Free Software Foundations GFDL
 \url{http://www.fsf.org/licensing/licenses/fdl.html}
 (your choice).} 
 will look at SymPy, a free and open source computer algebra
-system written entirely in Python, available from 
+system started in 2005 by the second author (\OC).
+It is written entirely in Python, available from 
 \url{http://sympy.org}.
 SymPy is licensed under the ``modified BSD'' license, as is its
 beautiful logo designed by Fredrik Johansson.
@@ -79,22 +81,9 @@ SymPy's latest release (as of October 2011) is 0.7.1.
 
 \section{SymPy's history and language}
 
-\begin{quotation}
-Some people say, that GPL had its place in history. Well, maybe
-it had, maybe not, it's hard to say - let's leave it for historians.
-But today in 2011,  I think that there is no advantage of GPL over
-BSD. The only thing that matters is to have a solid
-community, so that lots of people contribute to the project. Also it
-seems that these days, there are a lot of people who come to
-open-source, who don't really feel strongly about licensing, they just
-want their code to be used (no matter how), and thus use BSD. 
-
-{\em - \OC}
-\end{quotation}
-
 \subsection{History}
 
-SymPy was started by \OC in 2005 while a
+SymPy was started by \OC{} in 2005 while a
 physics undergraduate at the Charles University in Prague.
 He wrote initial code during the
 summer, then he improved it during the summer 2006, but otherwise the project
@@ -135,8 +124,17 @@ competitive by rewriting the core from scratch, that has made it from 10x to
 and as of this writing (October 2011) it contains patches from around 141
 different people (using {\tt git shortlog -ns | wc -l}).
 
-On Jan 4, 2011 \OC passed the project leadership to Aaron Meurer.
+On Jan 4, 2011 \OC{} passed the project leadership to Aaron Meurer.
 
+\subsection{License}
+
+SymPy uses the modified BSD license. \OC{} originally used GPL for SymPy, but
+early on in 2007 switched to BSD after discussion with other developers. This
+choice has worked very well for SymPy, as it doesn't enforce almost any
+restrictions on how people can use SymPy (for example SymPy is included in
+a commercial distribution or a paid Android application). SymPy developers
+believe in allowing people to use SymPy in any way possible as well as in
+creating a solid and active community around SymPy.
 
 \subsection{Active developers}
 
@@ -421,7 +419,7 @@ Then there are many SymPy modules, such as (for example) for these tasks:
 
 Thanks mostly to work done by physicist Brian Granger and students
 he has directed, SymPy has a lot of functionality in quantum physics
-implemented. I quote (by permission) from an email he sent to the author:
+implemented. We quote (by permission) from an email he sent to the authors:
 
 \begin{quotation}
 Many problems in quantum mechanics require extensive symbolic
@@ -701,8 +699,8 @@ email your question to {\tt sympy@googlegroups.com}.
 
 \noindent
 {\it Acknowledgements}:
-I thank \OC, Aaron Meurer, Mateusz Paprocki, Vladimir Peri\'c and Brian Granger  
-for helpful comments and corrections. (Any remaining errors are of course my
+We thank Aaron Meurer, Mateusz Paprocki, Vladimir Peri\'c and Brian Granger  
+for helpful comments and corrections. (Any remaining errors are of course our
 responsibility). Some of the material above is taken 
 with only slight modification from Paprocki's paper
 \cite{P}, the tutorial \cite{PM}, or the documentation at the official SymPy website
