@@ -3,22 +3,22 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
-\usepackage{array, rotating} 
+\usepackage{array, rotating}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{fancyvrb}
 
-\newtheorem{theorem}{Theorem} 
-\newtheorem{corollary}[theorem]{Corollary} 
-\newtheorem{conjecture}[theorem]{Conjecture} 
-\newtheorem{lemma}[theorem]{Lemma} 
-\newtheorem{proposition}[theorem]{Proposition} 
-\newtheorem{definition}[theorem]{Definition} 
-\newtheorem{example}[theorem]{Example} 
-\newtheorem{exercise}[theorem]{Exercise} 
-\newtheorem{axiom}{Axiom} 
-\newtheorem{remark}{Remark} 
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{axiom}{Axiom}
+\newtheorem{remark}{Remark}
 \def\ppp{{\mathbb{P}}}
 \def\aaa{{\mathbb{A}}}
 \def\fff{{\mathbb{F}}}
@@ -58,10 +58,10 @@ Creative Commons attribution license cc-by-sa
 \url{http://creativecommons.org/licenses/by/3.0/us/},
 or the Free Software Foundations GFDL
 \url{http://www.fsf.org/licensing/licenses/fdl.html}
-(your choice).} 
+(your choice).}
 will look at SymPy, a free and open source computer algebra
 system started in 2005 by the second author (\OC).
-It is written entirely in Python, available from 
+It is written entirely in Python, available from
 \url{http://sympy.org}.
 SymPy is licensed under the ``modified BSD'' license, as is its
 beautiful logo designed by Fredrik Johansson.
@@ -77,7 +77,7 @@ beautiful logo designed by Fredrik Johansson.
 
 SymPy is also used in other mathematics software systems.
 For example, SfePy (\url{http://sfepy.org/})
-includes SymPy. SfePy is a software for solving systems of coupled partial differential 
+includes SymPy. SfePy is a software for solving systems of coupled partial differential
 equations (PDEs) by the finite element method in 2D and 3D.
 The software Sage (\url{http://www.sagemath.org/}) also includes SymPy.
 
@@ -96,7 +96,7 @@ Fabian Pedregosa joined the project and helped fixed many things, contributed
 documentation and made it alive again. The development hasn't stopped since
 then.
 
-Many students improved SymPy incredibly 
+Many students improved SymPy incredibly
 as part of the Google Summer of Code (GSoC):
 \begin{itemize}
 \item
@@ -115,7 +115,7 @@ Addison Cugini, Christian Muise, \AM, Matthew Curry,
 {\O}yvind Jensen,
 
 \item
-GSoC2011: Tom Bachmann, Gilbert Gede, Tomo Lazovich, Saptarshi Mandal, 
+GSoC2011: Tom Bachmann, Gilbert Gede, Tomo Lazovich, Saptarshi Mandal,
 Sherjil Ozair, Vladimir Peri\'c,  Matthew Rocklin, Sean Vig, Jeremias Yehdegho.
 \end{itemize}
 
@@ -146,7 +146,7 @@ SymPy is a project with an active community of
 over 100 developers contributing to it. However, among the most active (on the
 mailinglist, patches, reviews, management) as of this writing (October 2011)
 are \AM, \OC, Brian Granger, Matuesz Paprocki, Ronan Lamy, and Chris
-Smith. Good (but not perfect) indicator is the number of patches contributed by
+Smith. A good (but not perfect) indicator is the number of patches contributed by
 people in the last year, for example the top 10 are:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=git-log]
@@ -167,23 +167,29 @@ $ git shortlog -ns --since="1 year ago" | head -n 10
 
 \subsection{Language}
 
-\begin{quotation}
-To me, there are three main
-advantages of SymPy.  First, is that it is very portable,
-since it is written in pure Python with no dependencies.
+SymPy is written in pure Python, which gives it three main advantages
+over other computer algebra systems (besides the fact that it is free).
+First, it is very portable, since it is written in pure Python with no
+dependencies, it can be run literally anywhere where there is a Python
+environment . There are even versions of SymPy for smartphones!
+
+In addition, this means that SymPy is very easy to install.  From a
+teacher's perspective, this is important. Indeed, if the user only
+wishes to use it as a calculator and not as a library, he need not
+install it at all---he can simply run the {\tt isympy} script from
+within the download directory.
+
 Second is that it is built on top of a very strong and easy to use
-language, Python, which is a huge improvement over every other
-computer algebra system, especially the ones that have invented their
-own language.  Third, since it's just a Python module, it can very
-easily be used as a library. 
+language, Python.  This is contrasted over other
+computer algebra system, which that have invented their
+own languages.  Even without considering the advantages of one language
+over another, the fact is that anyone who knows Python can write a program
+that uses SymPy.
 
-{\em - \AM}
-\end{quotation}
-
-There are even versions of SymPy for smartphones!
-In addition, besides the fact that it is free, one of the best advantages 
-to SymPy is how {\it easy} it is to install.
-From a teacher's perspective, this is important. 
+Third, since it's just a Python module, it can very
+easily be used as a library.  This is contrasted against many
+other computer systems, which may work very well as calculators, but are not
+so easy to use as part of a larger script, or to extend with custom classes.
 
 SymPy runs inside a normal Python interpreter, such as the one that
 comes with your system's Python or IPython.
@@ -202,8 +208,8 @@ IPython package installed),  that (pre)executes the following commands:
 
 \end{Verbatim}
 So starting {\tt isympy} is equivalent to starting Python (or IPython)
-and executing the above commands by hand. 
-For example, the following simple Python commands were run 
+and executing the above commands by hand.
+For example, the following simple Python commands were run
 from the command line after starting {\tt isympy}.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
@@ -235,23 +241,23 @@ take advantage of Gr\"obner bases computed with respect to a total
 degree ordering of monomials.
 
 Our problem is a minimisation problem, so we take advantage of total
-degree ordering. 
+degree ordering.
 This is a correct choice because total degree ordering takes monomials
-with smaller sums 
+with smaller sums
 of exponents first and we can observe that the smaller the sum of
-exponents in a solution 
+exponents in a solution
 to our coins problem will be, the less coins will be needed. So, the
-chosen ordering of 
+chosen ordering of
 monomials encodes the cost function of our problem.
 
 How to get the minimal number of required coins? Suppose we take any
-admissible solution 
+admissible solution
 to the studied problem. This can be the trivial solution in which we
-take 117 pennies or any 
+take 117 pennies or any
 other such that the total value of coins is equal to 117. We encode
-the chosen solution as a 
+the chosen solution as a
 binomial with numbers of particular coins as exponents of $p, n, d$ and
-$q$, and we reduce this 
+$q$, and we reduce this
 binomial with respect to the Gr\"obner basis G utilizing
 graded lexicographic ordering of monomials.
 
@@ -271,7 +277,7 @@ d n p  q
 \noindent
 The answer, that we were able to compute with SymPy, is 1
 dime, 1 nickel, 2 pennies, and 4 quarters.
-which altogether give the requested value of 117. This is also the minimal solution to our problem. 
+which altogether give the requested value of 117. This is also the minimal solution to our problem.
 }
 \end{example}
 
@@ -284,7 +290,7 @@ which altogether give the requested value of 117. This is also the minimal solut
 
 \subsection{Basics}
 
-A great deal of information about SymPy is available on its website. 
+A great deal of information about SymPy is available on its website.
 
 
 \begin{itemize}
@@ -299,7 +305,7 @@ Internet:
 \item
 Documentation:
 \newline
-{\it On-line reference manual}: 
+{\it On-line reference manual}:
 \newline
 \url{http://docs.sympy.org/}
 \newline
@@ -307,7 +313,7 @@ Documentation:
 \newline
 \url{https://github.com/sympy/sympy/wiki}
 %\newline
-%{\it Bibliography}: 
+%{\it Bibliography}:
 
 \item
 {\it Talks, blogs, papers, and lecture notes}:
@@ -337,7 +343,7 @@ Availability:
 {\it Source code and binaries}:
 \url{http://sympy.org/download.html}
 
-SymPy is easy to install on all operating systems that 
+SymPy is easy to install on all operating systems that
 support Python (e.g., MS Windows, Mac OSs, All flavors of Linux, and
 so on).
 
@@ -362,7 +368,7 @@ There is an email list for SymPy support and development:
 \item
 {\it License}:
 \newline
-Modified BSD. 
+Modified BSD.
 
 \end{itemize}
 
@@ -480,7 +486,7 @@ prints:
 \]
 
 For further details, see for example the papers by Cugini \cite{Cug}
-and Curry \cite{Cur}, or blog posts on quantum mechanics on 
+and Curry \cite{Cur}, or blog posts on quantum mechanics on
 Planet SymPy (\url{http://planet.sympy.org/}).
 
 \subsubsection{Packages}
@@ -494,7 +500,7 @@ instructions on their website (that is,
 
 \subsubsection{Examples}
 
-This section merely presents a few examples to illustrate some of 
+This section merely presents a few examples to illustrate some of
 SymPy's functionality.
 
 To plot a function in 2d, such as $y=\sin(x)$,
@@ -584,11 +590,11 @@ third, so SymPy returns only $[0,1]$, as it should.
 Poly(x**3 - 4*x**2 - x + 4, x, domain='ZZ')
 
 >>> lam = M.eigenvals()
->>> lam.keys()                
+>>> lam.keys()
 [1, -1, 4]
 >>> lamb = lam.keys()
 >>> expand((x-lamb[0])*(x-lamb[1])*(x-lamb[2]))
- 3      2        
+ 3      2
 x  - 4*x  - x + 4
 
 \end{Verbatim}
@@ -597,7 +603,7 @@ x  - 4*x  - x + 4
 In the last command, we merely verify that the characteristic
 polynomial is indeed a polynomial whose roots are the eigenvalues.
 
-Thanks mostly to the work of \AM, 
+Thanks mostly to the work of \AM,
 SymPy can solve higher order linear ordinary differential equations.
 See Meuer \cite{M} for details of the implementation.
 To solve the $3$-rd order constant coefficient ordinary differential
@@ -622,7 +628,7 @@ y(x) == (C1 + C2*x + C3*x**2 + x**3)*exp(x)
 \noindent
 Surprisingly, it seems Maxima cannot do this at the present time.
 
-SymPy handles easily a wide range of calculus computations, as the following 
+SymPy handles easily a wide range of calculus computations, as the following
 commands illustrate.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
@@ -654,7 +660,7 @@ Did you know SymPy can solve a linear recurrence sequence?
 For example, consider
 
 \[
- u_{n+2} = 2  u_{n+1} + 8  u_{n}, 
+ u_{n+2} = 2  u_{n+1} + 8  u_{n},
 \]
 where we know $u_{0} = 2$ and $u_{1} = 7$.
 
@@ -703,9 +709,9 @@ email your question to {\tt sympy@googlegroups.com}.
 
 \noindent
 {\it Acknowledgements}:
-We thank \AM, Mateusz Paprocki, Vladimir Peri\'c and Brian Granger  
+We thank \AM, Mateusz Paprocki, Vladimir Peri\'c and Brian Granger
 for helpful comments and corrections. (Any remaining errors are of course our
-responsibility). Some of the material above is taken 
+responsibility). Some of the material above is taken
 with only slight modification from Paprocki's paper
 \cite{P}, the tutorial \cite{PM}, or the documentation at the official SymPy website
 \cite{S}.
@@ -728,14 +734,14 @@ preprint date June 6, 2011.
 \newline
 \url{http://digitalcommons.calpoly.edu/physsp/39}
 
-\bibitem[M]{M} A. Meurer, 
+\bibitem[M]{M} A. Meurer,
 {\it Variation of Parameters and More}, blog post available at
 \newline
 \url{http://asmeurersympy.wordpress.com/2009/08/01/variation-of-parameters-and-more/}.
 
-\bibitem[P]{P}  
+\bibitem[P]{P}
 Mateusz Paprocki,
-{\it  Design and Implementation Issues of a Computer Algebra System 
+{\it  Design and Implementation Issues of a Computer Algebra System
 in an Interpreted, Dynamically Typed Programming Language},
 Master's Thesis, 2010, University of Technology of
 Wroclaw,  Poland.
@@ -744,10 +750,10 @@ Wroclaw,  Poland.
 \newline
 \url{http://mattpap.github.com/masters-thesis/html/index.html}
 
-\bibitem[PM]{PM}  
+\bibitem[PM]{PM}
 ------ and \AM,
 {\it Guide to symbolic mathematics with SymPy},
-SciPy conference 2011 presentation, 
+SciPy conference 2011 presentation,
 \newline
 \url{http://mattpap.github.com/scipy-2011-tutorial/html/mathematics.html}
 
