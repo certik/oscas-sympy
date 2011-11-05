@@ -153,7 +153,6 @@ Smith. A good (but not perfect) indicator is the number of patches contributed b
 people in the last year, for example the top 10 are:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=git-log]
-
 $ git shortlog -ns --since="1 year ago" | head -n 10
    590  Chris Smith
    579  Mateusz Paprocki
@@ -202,13 +201,11 @@ This starts a normal Python shell (IPython shell if you have the
 IPython package installed),  that (pre)executes the following commands:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=Python]
-
 >>> from __future__ import division
 >>> from sympy import *
 >>> x, y, z, t = symbols('x y z t')
 >>> k, m, n = symbols('k m n', integer=True)
 >>> f, g, h = symbols('f g h', cls=Function)
-
 \end{Verbatim}
 So starting {\tt isympy} is equivalent to starting Python (or IPython)
 and executing the above commands by hand.
@@ -216,12 +213,10 @@ For example, the following simple Python commands were run
 from the command line after starting {\tt isympy}.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> L = [i^2 for i in range(10) if i%2==0]
 >>> L; len(L)
 [2, 0, 6, 4, 10]
 5
-
 \end{Verbatim}
 
 The following example was taken from Mateusz Paprocki's master's
@@ -266,7 +261,6 @@ graded lexicographic ordering of monomials.
 
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> var('p, n, d, q')
 (p, n, d, q)
 >>> F = [p**5 - n, p**10 - d, p**25 - q]
@@ -274,7 +268,6 @@ graded lexicographic ordering of monomials.
 >>> reduced(p**117, G, order='grlex')[1]
      2  4
 d n p  q
-
 \end{Verbatim}
 
 \noindent
@@ -465,7 +458,6 @@ but none as significant as the quantum computing stuff.
 For example, here is how to convert between spin bases:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> from sympy import S, latex
 >>> from sympy.physics.quantum.spin import JxKet
 >>> latex(JxKet(S(1)/2,S(1)/2).rewrite('Jz'))
@@ -474,9 +466,8 @@ For example, here is how to convert between spin bases:
 >>> latex(JxKet(1,1).rewrite('Jz'))
 \frac{1}{2} {\left|1,-1\right\rangle } + \frac{1}{2} \sqrt{2} {\left|1,0\right
 \rangle } + \frac{1}{2} {\left|1,1\right\rangle }
-
 \end{Verbatim}
-prints:
+This renders to:
 
 \[
 \frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
@@ -510,11 +501,9 @@ To plot a function in 2d, such as $y=\sin(x)$,
 use the following SymPy commands.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> x = Symbol("x")
 >>> Plot(sin(x), [x, -3, 3])
 [0]: sin(x), 'mode=cartesian'
-
 \end{Verbatim}
 
 \noindent
@@ -525,10 +514,8 @@ To plot a surface in 3d, such as $z=xy^3-yx^3$,
 use the following SymPy commands.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> var('x y z')
 >>> Plot(x*y**3-y*x**3)
-
 \end{Verbatim}
 
 \noindent
@@ -555,7 +542,6 @@ The method {\tt rref} returns the row-reduced echelon form of a matrix,
 as well as a list of the pivot columns.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> M = Matrix(3,3,lambda i,j: i+j)
 >>> print M
 [0, 1, 2]
@@ -565,7 +551,6 @@ as well as a list of the pivot columns.
 ([1, 0, -1]
 [0, 1,  2]
 [0, 0,  0], [0, 1])
-
 \end{Verbatim}
 
 \noindent
@@ -573,7 +558,6 @@ Indeed, there is a pivot in the first two columns but not the
 third, so SymPy returns only $[0,1]$, as it should.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> M = Matrix([[1,1,2],[1,2,1],[2,1,1]])
 >>> print M
 [1, 1, 2]
@@ -599,7 +583,6 @@ Poly(x**3 - 4*x**2 - x + 4, x, domain='ZZ')
 >>> expand((x-lamb[0])*(x-lamb[1])*(x-lamb[2]))
  3      2
 x  - 4*x  - x + 4
-
 \end{Verbatim}
 
 \noindent
@@ -617,14 +600,12 @@ y'''-3y''+3y'-y=10e^x,
 use the following SymPy commands.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> x = Symbol("x")
 >>> y = Function('y')
 >>> de = y(x).diff(x,3)-3*y(x).diff(x,2)+3*y(x).diff(x)-y(x)-6*exp(x)
 >>> soln = dsolve(de, y(x))
 >>> print soln
 y(x) == (C1 + C2*x + C3*x**2 + x**3)*exp(x)
-
 \end{Verbatim}
 
 \noindent
@@ -634,7 +615,6 @@ SymPy handles easily a wide range of calculus computations, as the following
 commands illustrate.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> print legendre(8, x).diff(x)
 6435*x**7/16 - 9009*x**5/16 + 3465*x**3/16 - 315*x/16
 >>> print integrate(legendre(8, x),x)
@@ -644,18 +624,15 @@ commands illustrate.
 besselj(0, 0)
 >>> N(limit(j0(x),x,0))
 1.00000000000000
-
 \end{Verbatim}
 
 SymPy handles Taylor series expansions with no problem.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> x = Symbol('x')
 >>> f = 1/cos(x)
 >>> print f.series(x, 0, 10)
 1 + x**2/2 + 5*x**4/24 + 61*x**6/720 + 277*x**8/8064 + O(x**10)
-
 \end{Verbatim}
 
 Did you know SymPy can solve a linear recurrence sequence?
@@ -667,13 +644,11 @@ For example, consider
 where we know $u_{0} = 2$ and $u_{1} = 7$.
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> n = Symbol('n', integer=True)
 >>> u = Function('u')
 >>> f=u(n+2)-2*u(n+1)-8*u(n)
 >>> print rsolve(f, u(n), {u(0):2, u(1):7})
 (-2)**n/6 + 11*4**n/6
-
 \end{Verbatim}
 
 SymPy contains wide range of special functions and it can easily be used to
@@ -684,7 +659,6 @@ shows how to sum an infinite series), you can compare the formula and the value
 with the abstract of the paper \cite{QED} and see that it agrees:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> from sympy import pi, zeta, S, log, summation, var, oo
 >>> var("n")
 n
@@ -695,7 +669,6 @@ n
 ...         17101 * pi**2 / 810 + S(28259)/5184
 >>> A_3.n()
 1.18124145658720
-
 \end{Verbatim}
 
 \vskip 0.3in
