@@ -1,4 +1,3 @@
-
 \documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
@@ -32,7 +31,7 @@
 \def\qed{$\Box$}
 \def\OC{O.Č.}
 \def\AM{A.M.}
-
+\def\BG{B.G.}
 
 \begin{document}
 
@@ -149,7 +148,7 @@ creating a solid and active community around SymPy.
 SymPy is a project with an active community of
 over 100 developers contributing to it. However, among the most active (on the
 mailinglist, patches, reviews, management) as of this writing (October 2011)
-are \AM, \OC, B. G., Matuesz Paprocki, Ronan Lamy, and Chris
+are \AM, \OC, \BG, Matuesz Paprocki, Ronan Lamy, and Chris
 Smith. A good (but not perfect) indicator is the number of patches contributed by
 people in the last year, for example the top 10 are:
 
@@ -461,7 +460,7 @@ Then there are many SymPy modules, such as (for example) for these tasks:
 
 \subsubsection{Quantum physics}
 
-Thanks mostly to work done by B.G., and students he has directed, SymPy
+Thanks mostly to work done by \BG, and students he has directed, SymPy
 has extensive capabilities in quantum physics.  These capabilities are focused
 on the various symbolic manipulations that arise in quantum mechanics,
 rather than on more traditional numerical computations.
@@ -487,21 +486,19 @@ utilize them and iv) density operators and matrices for representing mixed state
 The classes we have created for quantum computing are now being used
 in a research context. Being able to handle gates and qubits symbolically
 is extremely important, as the alternative requires constructing and multiplying
-extremely large matrices. This is enabling B.G. and co-workers to develop new
+extremely large matrices. This is enabling \BG{} and co-workers to develop new
 optimization approaches for quantum circuits and algorithms.
 
 As an example of the quantum computing capabilities in SymPy, we show how to
 apply a Hadamard gate to a qubit symbolically:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> from sympy.physics.quantum import qapply
 >>> from sympy.physics.quantum.gate import H
 >>> from sympy.physics.quantum.qubit import Qubit
 >>> c = H(0)*Qubit('0')
 >>> qapply(c)
 sqrt(2)*|0>/2 + sqrt(2)*|1>/2
-
 \end{Verbatim}
 
 In this example, we illustrate the rewriting of two angular momentum states in different
@@ -759,7 +756,7 @@ California Polytechnic State University, Senior Thesis, 2011.
 \newline
 \url{http://digitalcommons.calpoly.edu/physsp/39}
 
-\bibitem[M]{M} A. Meurer,
+\bibitem[M]{M} Aaron Meurer,
 {\it Variation of Parameters and More}, blog post available at
 \newline
 \url{http://asmeurersympy.wordpress.com/2009/08/01/variation-of-parameters-and-more/}.
@@ -776,7 +773,7 @@ Wroclaw,  Poland.
 \url{http://mattpap.github.com/masters-thesis/html/index.html}
 
 \bibitem[PM]{PM}
------- and \AM,
+------ and Aaron Meurer,
 {\it Guide to symbolic mathematics with SymPy},
 SciPy conference 2011 presentation,
 \newline
