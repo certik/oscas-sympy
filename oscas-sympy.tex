@@ -37,7 +37,8 @@
 
 \author{David Joyner\thanks{Address: Mathematics Department
 US Naval Academy, Annapolis, MD 21402, USA, wdj@usna.edu},
-Ondřej Čertík\thanks{University of Nevada, Reno}}
+Ondřej Čertík\thanks{University of Nevada, Reno},
+Brian E.~Granger\thanks{California Polytechnic State University, San Luis Obispo, CA}}
 \title{{\small{Open Source Computer Algebra Systems}}\\ {\LARGE{SymPy}}}
 
 \date{2011-10-31}
@@ -441,39 +442,51 @@ Then there are many SymPy modules, such as (for example) for these tasks:
 
 \subsubsection{Quantum physics}
 
-Thanks mostly to work done by physicist Brian Granger and students
-he has directed, SymPy has a lot of functionality in quantum physics
-implemented. We quote (by permission) from an email he sent to the authors:
+Thanks mostly to work done by B.G., and students he has directed, SymPy
+has extensive capabilities in quantum physics.  These capabilities are focused
+on the various symbolic manipulations that arise in quantum mechanics,
+rather than on more traditional numerical computations.
 
-\begin{quotation}
-Many problems in quantum mechanics require extensive symbolic
-manipulations.  These manipulations use the various mathematical
-entities of quantum mechanics:  hilbert spaces, operators,
-inner/outer/tensor products, commutators/anticommutators, states,
-and so on.  To make these symbolic manipulations possibly in SymPy, we have
-implemented these entities in a completely general and abstract
-manner.  By using subclassing, we can treat particular quantum
-mechanical systems.
+To enable these symbolic manipulations to be performed using SymPy, we have
+implemented the Dirac notation in its most abstract and general form. This includes
+all of the needed mathematical entities: Hilbert spaces, bras and kets, operators,
+inner/outer/tensor products, commutators, anticommutators and so on.
 
-The most important work we have done on this front is to create
-classes for simulating quantum computers and other quantum information
-problems.  We are now using that framework to build optimization
-algorithms for quantum computers.  Being able to handle everything
-symbolically is massively important for us, as the alternative
-requires constructing and multiplying extremely large matrices.
+The object-oriented nature of SymPy/Python has been particularly valuable in
+this work.  The various mathematical entities listed above are implemented
+as base classes and then specific physical systems are implemented through
+subclassing.  Thus, for example, when a spin operator is defined, it immediately
+inherits all of the capabilities of general hermitian operators.  This allows new physical
+systems to be implemented quickly and easily.
 
-It turns out that the object-oriented nature of SymPy/Python has been
-really powerful for us and is a very nice way of abstracting a general
-theory (using base classes) and particular realizations of that theory in
-physical systems (using subclasses).
+The following quantum mechanical system have been implemented in this manner:
+i) quantum angular momentum including spin coupling, ii) second quantization for
+fermions and bosons, iii) gates and qubits used in quantum computing and quantum
+information, iii) position and momentum eigenstates and a variety of systems that
+utilize them and iv) density operators and matrices for representing mixed states.
 
-We have also implemented a number of other physical systems as well,
-but none as significant as the quantum computing stuff.
+The classes we have created for quantum computing are now being used
+in a research context. Being able to handle gates and qubits symbolically
+is extremely important, as the alternative requires constructing and multiplying
+extremely large matrices. This is enabling B.G. and co-workers to develop new
+optimization approaches for quantum circuits and algorithms.
 
-{\em - Brian Granger}
-\end{quotation}
+As an example of the quantum computing capabilities in SymPy, we show how to
+apply a Hadamard gate to a qubit symbolically:
 
-For example, here is how to convert between spin bases:
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+
+>>> from sympy.physics.quantum import qapply
+>>> from sympy.physics.quantum.gate import H
+>>> from sympy.physics.quantum.qubit import Qubit
+>>> c = H(0)*Qubit('0')
+>>> qapply(c)
+sqrt(2)*|0>/2 + sqrt(2)*|1>/2
+
+\end{Verbatim}
+
+In this example, we illustrate the rewriting of two angular momentum states in different
+bases and show the integrated latex rendering of SymPy:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
 
@@ -487,7 +500,7 @@ For example, here is how to convert between spin bases:
 \rangle } + \frac{1}{2} {\left|1,1\right\rangle }
 
 \end{Verbatim}
-prints:
+This will print:
 
 \[
 \frac{1}{2} \sqrt{2} {\left|\frac{1}{2},- \frac{1}{2}\right\rangle } + \frac{1
@@ -499,8 +512,8 @@ prints:
 \rangle } + \frac{1}{2} {\left|1,1\right\rangle }
 \]
 
-For further details, see for example the papers by Cugini \cite{Cug}
-and Curry \cite{Cur}, or blog posts on quantum mechanics on 
+For further details, see the papers by Cugini \cite{Cug}
+and Curry \cite{Cur}, or blog posts related to quantum mechanics on 
 Planet SymPy (\url{http://planet.sympy.org/}).
 
 \subsubsection{Packages}
@@ -723,7 +736,7 @@ email your question to {\tt sympy@googlegroups.com}.
 
 \noindent
 {\it Acknowledgements}:
-We thank Aaron Meurer, Mateusz Paprocki, Vladimir Peri\'c and Brian Granger  
+We thank Aaron Meurer, Mateusz Paprocki and Vladimir Peri\'c
 for helpful comments and corrections. (Any remaining errors are of course our
 responsibility). Some of the material above is taken 
 with only slight modification from Paprocki's paper
@@ -737,14 +750,14 @@ with only slight modification from Paprocki's paper
 \bibitem[Cug]{Cug}
 Addison Cugini,
 {\it Quantum Mechanics, Quantum Computation, and the Density Operator in SymPy},
-preprint date 06/12/2011
+California Polytechnic State University, Senior Thesis, 2011.
 \newline
 \url{http://digitalcommons.calpoly.edu/physsp/38}
 
 \bibitem[Cur]{Cur}
 Matthew Curry,
-{\it Symbolic Quantum Circuit Simpliflcation in SymPy}
-preprint date June 6, 2011.
+{\it Symbolic Quantum Circuit Simpliflcation in SymPy},
+California Polytechnic State University, Senior Thesis, 2011.
 \newline
 \url{http://digitalcommons.calpoly.edu/physsp/39}
 
@@ -790,32 +803,6 @@ Phys.Lett. B379 (1996) 283-291
 
 \end{document}
 
-
-email from Brian Granger 2011-10-31:
-
-Many problems in quantum mechanics require extensive symbolic
-manipulations.  These manipulations use the various mathematical
-entities of quantum mechanics:  hilbert spaces, operators,
-inner/outer/tensor products, commutators/anticommutators, states,
-and so on.  To make these symbolic manipulations possibly in SymPy, we have
-implemented these entities in a completely general and abstract
-manner.  By using subclassing, we can treat particular quantum
-mechanical systems.
-
-The most important work we have done on this front is to create
-classes for simulating quantum computers and other quantum information
-problems.  We are now using that framework to build optimization
-algorithms for quantum computers.  Being able to handle everything
-symbolically is massively important for us, as the alternative
-requires constructing and multiplying extremely large matrices.
-
-It turns out that the object-oriented nature of SymPy/Python has been
-really powerful for us and is a very nice way of abstracting a general
-theory (using base classes) and particular realizations of that theory in
-physical systems (using subclasses).
-
-We have also implemented a number of other physical systems as well,
-but none as significant as the quantum computing stuff.
 
 +++++++++++++++++++++
 
