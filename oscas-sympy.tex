@@ -395,49 +395,67 @@ Currently, SymPy core has extensive computational capabilities including:
 
 \begin{itemize}
 \item
-    basic arithmetics $*,/,+,-,**$,
+    basic arithmetics $*,/,+,-,**$;
 \item
-    basic simplification (like $a*b*b + 2*b*a*b \mapsto 3*a*b^2$),
+    basic simplification (like $a*b*b + 2*b*a*b \mapsto 3*a*b^2$;
 \item
-    expansion (like $(a+b)^2 \mapsto a^2 + 2*a*b + b^2$),
+    expansion (like $(a+b)^2 \mapsto a^2 + 2*a*b + b^2$);
 \item
-    functions ($\exp, \ln$, \dots),
+    functions ($\exp, \ln$, \dots);
 \item
     complex numbers (like $\exp$(I*x).expand(complex=True) $\mapsto$
-    $\cos(x)+I*\sin(x)$),
+    $\cos(x)+I*\sin(x)$);
 \item
-    differentiation,
+    differentiation;
 \item
-    taylor (laurent) series,
+    taylor (laurent) series;
 \item
-    substitution (like $x \mapsto \ln(x)$, or $\sin \mapsto \cos$),
+    substitution (like $x \mapsto \ln(x)$, or $\sin \mapsto \cos$);
 \item
-    arbitrary precision integers, rationals and floats,
+    arbitrary precision integers, rationals, and floats;
 \item
-    noncommutative symbols,
+    noncommutative symbols;
 \item
-    pattern matching .
+    pattern matching;
+\item
+    assumptions (like $x$ is positive $\mapsto \sqrt{x^2} = x$).
 \end{itemize}
 Then there are many SymPy modules, such as (for example) for these tasks:
 \begin{itemize}
 \item
-    more functions ($\sin, \cos, \tan$, atan, asin, acos, factorial, zeta, legendre),
+    more functions ($\sin, \cos, \tan$, atan, asin, acos, factorial, zeta, legendre, \ldots);
 \item
-    limits (like limit($x*\log(x), x, 0) \to 0$),
+    limits (like limit($x*\log(x), x, 0) \to 0$);
 \item
-    integration using extended Risch-Norman heuristic,
+    integration using extended Risch-Norman heuristic;
 \item
-    polynomials (division, gcd, square free decomposition, groebner bases, factorization),
+    polynomials (division, gcd, square free decomposition, groebner bases, factorization, \ldots);
 \item
-    solvers (algebraic, difference and differential equations, and systems of equations),
+    solvers (algebraic and transcendental equations, difference equations, differential equations, and systems of equations);
 \item
-    symbolic matrices (determinants, LU decomposition...),
+    simplification;
 \item
-  Pauli and Dirac algebra,
+    logic;
 \item
-    geometry module,
+    symbolic matrices (determinants, LU decomposition, \ldots);
 \item
-    plotting (2D and 3D) .
+    number theory;
+\item
+    Pauli and Dirac algebra;
+\item
+    quantum physics;
+\item
+    geometry;
+\item
+    plotting (2D and 3D);
+\item
+    2D unicode pretty printing.
+\item
+    tensors;
+\item
+    stastistics;
+\item
+    combinatorics.
 \end{itemize}
 
 \subsubsection{Quantum physics}
