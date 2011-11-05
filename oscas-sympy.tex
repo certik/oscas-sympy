@@ -493,14 +493,12 @@ As an example of the quantum computing capabilities in SymPy, we show how to
 apply a Hadamard gate to a qubit symbolically:
 
 \begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
-
 >>> from sympy.physics.quantum import qapply
 >>> from sympy.physics.quantum.gate import H
 >>> from sympy.physics.quantum.qubit import Qubit
 >>> c = H(0)*Qubit('0')
 >>> qapply(c)
 sqrt(2)*|0>/2 + sqrt(2)*|1>/2
-
 \end{Verbatim}
 
 In this example, we illustrate the rewriting of two angular momentum states in different
