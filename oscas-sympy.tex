@@ -271,9 +271,28 @@ d n p  q
 \end{Verbatim}
 
 \noindent
-The answer, that we were able to compute with SymPy, is 1
-dime, 1 nickel, 2 pennies, and 4 quarters.
-which altogether give the requested value of 117. This is also the minimal solution to our problem.
+The answer, which we were able to compute with SymPy, is 1 dime, 1 nickel,
+2 pennies, and 4 quarters which altogether give the requested value of 117.
+This is also the minimal solution to our problem.
+
+This example showed SymPy's ability to compute with Gr\"obner basis, but the
+problem can be solved without such advanced machinery using greedy approach
+that involves only basic arithmetics:
+
+\begin{Verbatim}[fontsize=\scriptsize,fontfamily=courier,fontshape=tt,frame=single,label=SymPy]
+>>> k = Symbol('k', integer=True)
+>>> coin_values = zip(var("p, n, d, q"), [1, 5, 10, 25])
+>>> total, coin_counts = 117, []
+>>> for coin, value in reversed(coin_values):
+...     count = floor(solve(k*value <= total, k).rhs)
+...     coin_counts.append((coin, count))
+...     total -= count*value
+...
+>>> Mul(*[ coin**count for coin, count in coin_counts ])
+     2  4
+d n p  q
+\end{Verbatim}
+
 }
 \end{example}
 
